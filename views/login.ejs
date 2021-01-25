@@ -1,4 +1,20 @@
-<h1> login </h1>
+<h1>login</h1>
+<style>
+  div {
+    margin-left: 44%;
+  }
+  h1 {
+    margin-top: 10%;
+    text-align: center;
+    font-size: xx-large;
+  }
+  button {
+    margin-left: 48%;
+    background-color: darkgreen;
+    height: 30px;
+    width: 75px;
+  }
+</style>
 <form action="/users/login" method="POST">
 <div>
 <label for="email">email</label>
@@ -8,6 +24,7 @@ name="email"
 placeholder="enter email"
 />
 </div>
+<br>
 <div>
     <label for="password">password</label>
     <input
@@ -16,5 +33,6 @@ placeholder="enter email"
       placeholder="enter password"
     />
 </div>
+<br>
 <button type="submit" class="btn btn-primary btn-block">login</button>  
 </form>

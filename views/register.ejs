@@ -1,4 +1,20 @@
-<h1>sign up here</h1>
+<h1>sign up below</h1>
+<style>
+  h1 {
+    margin-top: 10%;
+    text-align: center;
+    font-size: xx-large;
+  }
+  div {
+    margin-left: 44%;
+  }
+  button {
+    margin-left: 48%;
+  }
+  p {
+    text-align: center;
+  }
+</style>
 <form action="/users/register" method="POST">
 <div>
     <label for="name">username</label>
@@ -8,8 +24,8 @@
       placeholder="enter username"
       value="<%= typeof name != 'undefined' ? name : '' %>"
     />
-  
 </div>
+<br>
 <div>
     <label for="email">email</label>
     <input
@@ -18,8 +34,9 @@
       placeholder="enter email"
       value="<%= typeof email != 'undefined' ? email : '' %>"
     />
-  </div>
-  <div >
+</div>
+<br>
+<div >
     <label for="password">password</label>
     <input
       type="password"
@@ -27,8 +44,9 @@
       placeholder="enter password"
       value="<%= typeof password != 'undefined' ? password : '' %>"
     />
-  </div>
-  <div >
+</div>
+<br>
+<div >
     <label for="password2">reenter password</label>
     <input
       type="password"
@@ -36,9 +54,14 @@
       placeholder="reenter password"
       value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
     />
-  </div>
-  <button type="submit" class="btn btn-primary btn-block">
+</div>
+<br>
+<button type="submit" class="btn btn-primary btn-block">
     create account
-  </button>
+</button>
 </form>
+<br>
+<br>
+<br>
+<br>
 <p > already have an account? <a href="/users/login"> login here </a></p>
