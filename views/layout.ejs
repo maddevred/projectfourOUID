@@ -3,23 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OUID</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>What_to_Cook</title>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <%- include('partials/alerts') %>
     <header>
       <h1>OUID</h1>
       <nav>
-        <ul>
-          <% if (!currentUser) { %>
-            <li><a href="/auth/signup">Signup</a></li>
-            <li><a href="/auth/login">Login</a></li>
-          <% } else {%>
-            <li><a href="/auth/logout">Logout</a></li>
-            <li><a href="/profile">Profile</a></li>
-          <% } %>
-        </ul>
       </nav>
     </header>
     <%- body %>

@@ -1,0 +1,44 @@
+<h1>sign up here</h1>
+<form action="/users/register" method="POST">
+<div>
+    <label for="name">username</label>
+    <input
+      type="name"
+      name="name"
+      placeholder="enter username"
+      value="<%= typeof name != 'undefined' ? name : '' %>"
+    />
+  
+</div>
+<div>
+    <label for="email">email</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="enter email"
+      value="<%= typeof email != 'undefined' ? email : '' %>"
+    />
+  </div>
+  <div >
+    <label for="password">password</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="enter password"
+      value="<%= typeof password != 'undefined' ? password : '' %>"
+    />
+  </div>
+  <div >
+    <label for="password2">reenter password</label>
+    <input
+      type="password"
+      name="password2"
+      placeholder="reenter password"
+      value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">
+    create account
+  </button>
+</form>
+<p > already have an account? <a href="/users/login"> login here </a></p>

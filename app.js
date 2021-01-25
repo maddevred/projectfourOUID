@@ -1,67 +1,33 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const mongoose = require('mongoose');
+const router = express.Router();
+const app = express();
+const expressEjsLayout = require('express-ejs-layouts')
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require("passport");
 
-var mongoose = require('mongoose');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
+require('./config/passport')(passport)
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
+.then(() => console.log('connected,,'))
+.catch((err)=> console.log(err));
 
-var app = express();
+app.set('view engine','ejs');
+app.use(expressEjsLayout);
 
-var Account = require('./models/account');
-const { serializeUser } = require('passport');
+app.use(express.urlencoded({extended : false}));
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(require('express-session')({
- secret: 'keyboard cat',
- resave: false,
- saveUninitialized: false
+app.use(session({
+    secret : 'secret',
+    resave : true,
+    saveUninitialized : true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', routes);
+app.use(flash());
 
-passport.use(new LocalStrategy(Account.authenticate()));
-passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser());
+app.use('/',require('./routes/index'));
+app.use('/users',require('./routes/users'));
 
-mongoose.connect('mongodb://localhost/login-example');
-
-app.use(function(req, res, next) {
- var err = new Error('Not Found');
- err.status = 404;
- next(err);
-});
-
-if (app.get('env') === 'development') {
- app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-   message: err.message,
-   error: err
-  });
- });
-}
-
-app.use(function(err, req, res, next) {
- res.status(err.status || 500);
- res.render('error', {
-  message: err.message,
-  error: {}
- });
-});
-
-module.exports = app;
+app.listen(3000); 

@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": "open",
-    "database": "express_auth_development",
+    "database": "projectfourouid_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "open",
-    "database": "express_auth_test",
+    "database": "projectfourouid_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "open",
-    "database": "express_auth_production",
+    "database": "projectfourouid_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
