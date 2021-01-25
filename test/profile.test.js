@@ -10,9 +10,9 @@ before(function(done) {
   });
 });
 
-describe('GET /profile', function() {
+describe('GET /dashboard', function() {
   it('should redirect to /auth/login if not logged in', function(done) {
-    request(app).get('/profile')
+    request(app).get('/dashboard')
     .expect('Location', '/auth/login')
     .expect(302, done);
   });
@@ -31,7 +31,7 @@ describe('GET /profile', function() {
       if (error) {
         done(error);
       } else {
-        agent.get('/profile')
+        agent.get('/dashboard')
         .expect(200, done);
       }
     });
