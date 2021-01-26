@@ -33,6 +33,13 @@ app.use('/users',require('./routes/users'));
 
 app.listen(3000); 
 
+if( app.get("env") === "production"  ) 
+ {
+
+	sess.cookie.secure = true;
+	app.set("trust proxy", 1);
+}
+
 module.exports = app;
 
 const PORT = process.env.PORT || 8000; app.listen(PORT, () => { console.log(`Successful connection! Run ${PORT} OR ${3000} from host cpu to open!`); });
