@@ -35,4 +35,4 @@ app.listen(3000);
 
 module.exports = app;
 
-const PORT = process.env.PORT || 8000; app.listen(PORT, () => { console.log(`Successful connection! Run ${PORT} OR ${3000} from your local computer to open!`); });
+const PORT = process.env.PORT || 8000; app.listen(PORT, () => { console.log(`Successful connection! Run ${PORT} OR ${3000} from host cpu to open!`); });

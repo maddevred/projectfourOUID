@@ -48,3 +48,23 @@
 
 ### API Information:
 http://strains.evanbusse.com/index.html<br>
+
+
+### To See This Project:
+<strong>run</strong>
+<br>
+*npm start + localhost:3000/localhost:8000* 
+<br>
+<strong>OR</strong> 
+<br>
+*node app + localhost:3000/localhost:8000* 
+<br>
+<strong>from command line</strong>
+
+<br>
+
+<strong>OR</strong>
+
+<br>
+
+(*insert heroku link here*)
