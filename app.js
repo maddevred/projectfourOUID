@@ -6,6 +6,10 @@ const expressEjsLayout = require('express-ejs-layouts')
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require("passport");
+const dotenv = require('dotenv').config();
+const multer = require('multer');
+const path = require('path');
+const fileUpload = require('express-fileupload')
 
 require('./config/passport')(passport)
 
@@ -24,12 +28,18 @@ app.use(session({
     saveUninitialized : true
 }));
 
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
 app.use('/',require('./routes/index'));
 app.use('/users',require('./routes/users'));
+app.use(express.static(__dirname + '/public'));
+
+app.use(fileUpload({
+    limits: { fileSize: 50 * 1024 * 1024 },
+}));
 
 app.listen(3000); 
 
