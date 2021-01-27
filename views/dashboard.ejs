@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>OUID</title>
   </head>
+  
   <body>
+
     <p> welcome back... <%= user.name %>! </p>
     <p> wanna make your account more personal?
+    <br>    
     upload/ change profile pic below!</p>       
     <form method="POST" action="/upload-profile-pic" enctype="multipart/form-data">
         <div>
@@ -17,7 +20,7 @@
         </div>
         <br>
         <div>
-            <input type="submit" name="btn_upload_profile_pic" value="this pic!" />
+            <input type="submit" name="btn_upload_profile_pic" value="upload!" />
         </div>
     </form>
     <br>
@@ -43,7 +46,21 @@
             text-align: center;
             font-size: xx-large;
         }
+        .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: red;
+            color: white;
+            text-align: center;
+        }
     </style>
+    <div class="footer">
+        <p>OUID | COVID-19 EDITION 2021</p>
+    </div>
+
     </body>
+
 </html>
  
