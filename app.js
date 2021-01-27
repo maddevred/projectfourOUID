@@ -49,10 +49,10 @@ app.use(fileUpload({
     limits: { fileSize: 50 * 1024 * 1024 },
 }));
 
-app.listen(3000); 
+// app.listen(3000); 
 
 module.exports = app;
 
-const PORT = process.env.PORT || 8000; app.listen(PORT, () => { console.log(`Success! Connected! Run ${PORT} OR ${3000} from host cpu to open!`); });
+const PORT = process.env.PORT || 3000; app.listen(PORT, () => { console.log(`Success! Connected! Run ${PORT} from host cpu to open!`); });
 
 
