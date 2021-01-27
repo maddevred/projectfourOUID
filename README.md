@@ -69,11 +69,11 @@ http://strains.evanbusse.com/index.html<br>
 ### To See This Project:
 <strong>run</strong>
 <br>
-*npm start + localhost:3000/localhost:8000* 
+*npm start + localhost:3000* 
 <br>
 <strong>OR</strong> 
 <br>
-*node app + localhost:3000/localhost:8000* 
+*node app + localhost:3000* 
 <br>
 <strong>from command line</strong>
 
