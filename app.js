@@ -14,29 +14,33 @@ const {MongoClient} = require('mongodb');
 
 require('./config/passport')(passport)
 
-async function main(){
-    const uri = "mongodb+srv://root:null@firstcluster.1bziy.mongodb.net/test?retryWrites=true&w=majority";
-    const client = new MongoClient(uri);
+mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
+.then(() => console.log('[ welcome to my app :))) ]'))
+.catch((err)=> console.log(err));
 
-    try {
-        await client.connect();
+// async function main(){
+//     const uri = "mongodb+srv://root:null@firstcluster.1bziy.mongodb.net/test?retryWrites=true&w=majority";
+//     const client = new MongoClient(uri);
 
-        await  listDatabases(client);
+//     try {
+//         await client.connect();
 
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
-}
+//         await  listDatabases(client);
 
-async function listDatabases(client){
-    databasesList = await client.db().admin().listDatabases();
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
+//     } catch (e) {
+//         console.error(e);
+//     } finally {
+//         await client.close();
+//     }
+// }
 
-main().catch(console.error);
+// async function listDatabases(client){
+//     databasesList = await client.db().admin().listDatabases();
+//     console.log("Databases:");
+//     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+// };
+
+// main().catch(console.error);
 
 app.set('view engine','ejs');
 app.use(expressEjsLayout);
