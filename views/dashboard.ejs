@@ -31,31 +31,6 @@
     </form>
     <div id="response"></div>
 
-    <script>
-        function callREST() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("response").innerHTML = this.responseText;
-                }
-            };
-            xhttp.open("GET", "strainapi.evanbusse.com/yUd2BuW/strains/search/name/NAME", true);
-            xhttp.send();
-            xhttp.post();
-        }
-        function callREST() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("response").innerHTML = this.responseText;
-                }
-            };
-            xhttp.open("GET", "strainapi.evanbusse.com/yUd2BuW/searchdata/effects", true);
-            xhttp.send();
-            xhttp.post();
-        }
-    </script>
-
     <style>
         .avatar {
             vertical-align: middle;
