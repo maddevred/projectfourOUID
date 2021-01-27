@@ -13,19 +13,21 @@
     <p> wanna make your account more personal?
     <br>    
     upload/ change profile pic below!</p>       
-    <form method="POST" action="/upload-profile-pic" enctype="multipart/form-data">
-        <div>
-            <label>select a pic</label>
-            <input type="file" name="profile_pic" value="choose pic"/>
-            <input type="submit" name="btn_upload_profile_pic" value="upload!" />
-        </div>
-    </form>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <legend>Upload Avatar</legend>
+        <input type="file" name="profile-pic-upload">
+        <button type="submit" class="btn btn-primary">choose pic</button>
+    </form>        
     <br>
     <a href="/users/logout">logout</a>
 
     <h1>nice of you to join us!</h1>
     <h2>here you have access to information on marijuana such as strains, races, and their effects :)))</h2>
     <style>
+        form {
+            text-align: right;
+            padding-right: 1em;
+        }
         div {
             text-align: right;
             padding-right: 1em;
