@@ -12,8 +12,6 @@ const path = require('path');
 const fileUpload = require('express-fileupload');
 const {MongoClient} = require('mongodb');
 
-const isLoggedIn = require('./middleware/isLoggedIn');
-
 require('./config/passport')(passport)
 
 mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
@@ -50,24 +48,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(fileUpload({
     limits: { fileSize: 50 * 1024 * 1024 },
 }));
-
-app.get('/',isLoggedIn, function(req, res) {
-    if (req.user) {
-    axios.get('https://www.themealdb.com/api/json/v1/1/random.php')
-      .then(function (response) {
-        console.log(JSON.stringify(response.data.meals[0]));
-        res.render("recipes", {
-          recipe: response.data.meals[0]
-        })
-        console.log(typeof response.data);
-      })
-    }  
-    else res.render('index', { alerts: res.locals.alerts });
-});
-
-app.get('/dashboard', isLoggedIn, (req, res) => {
-    res.render('dashboard');
-  });
 
 app.listen(3000); 
 

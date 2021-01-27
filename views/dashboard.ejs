@@ -24,6 +24,27 @@
 
     <h1>nice of you to join us!</h1>
     <h2>here you have access to information on marijuana such as strains, races, and their effects :)))</h2>
+    <form>
+        search:<br>
+        <tr><td><input type="text" name="keyword" onkeyup="callREST()"></td></tr>
+        <tr><td><input name="Submit" type="submit" value="search ouid"></td></tr><br>
+    </form>
+    <div id="response"></div>
+
+    <script>
+        function callREST() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("response").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "strainapi.evanbusse.com/yUd2BuW/strains/search/name/NAME", true);
+            xhttp.send();
+            xhttp.post();
+        }
+    </script>
+
     <style>
         .avatar {
             vertical-align: middle;
@@ -40,7 +61,7 @@
             padding-right: 1em;
         }
         a {
-            font-size: medium;
+            font-size: xx-large;
             color: whitesmoke;
             position: absolute;
             bottom: 7%;
