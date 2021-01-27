@@ -14,8 +14,9 @@ const fileUpload = require('express-fileupload')
 require('./config/passport')(passport)
 
 mongoose.connect('mongodb://localhost/test',{useNewUrlParser: true, useUnifiedTopology : true})
-.then(() => console.log('connected,,'))
+.then(() => console.log('[ welcome to my app :))) ]'))
 .catch((err)=> console.log(err));
+
 
 app.set('view engine','ejs');
 app.use(expressEjsLayout);
@@ -45,4 +46,4 @@ app.listen(3000);
 
 module.exports = app;
 
-const PORT = process.env.PORT || 8000; app.listen(PORT, () => { console.log(`Successful connection! Run ${PORT} OR ${3000} from host cpu to open!`); });
+const PORT = process.env.PORT || 8000; app.listen(PORT, () => { console.log(`Success! Connected! Run ${PORT} OR ${3000} from host cpu to open!`); });
