@@ -12,25 +12,68 @@
     <p> welcome back... <%= user.name %>! </p>
     <p> wanna make your account more personal?
     <br>    
-    upload/ change profile pic below!</p> 
-    <form>
-        <img src="upload2/avatar.png" width="100" height="100" />
-        <br>
-        <tr><td><input type="file" name="image" ></td></tr>
-        <tr><td><input name="Submit" type="submit" value="choose image"></td></tr>
-    </form>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <div class="file-upload">
+    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+
+    <div class="image-upload-wrap">
+        <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+        <div class="drag-text">
+        <h3>Drag and drop a file or select add Image</h3>
+        </div>
+    </div>
+    <div class="file-upload-content">
+        <img class="file-upload-image" src="#" alt="your image" />
+        <div class="image-title-wrap">
+        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+        </div>
+    </div>
+    </div>
+
+    <script>
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+      
+          var reader = new FileReader();
+      
+          reader.onload = function(e) {
+            $('.image-upload-wrap').hide();
+      
+            $('.file-upload-image').attr('src', e.target.result);
+            $('.file-upload-content').show();
+      
+            $('.image-title').html(input.files[0].name);
+          };
+      
+          reader.readAsDataURL(input.files[0]);
+      
+        } else {
+            console.log(response)
+          removeUpload();
+        }
+      }
+      
+      function removeUpload() {
+        $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+        $('.file-upload-content').hide();
+        $('.image-upload-wrap').show();
+      }
+      $('.image-upload-wrap').bind('dragover', function () {
+          $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function () {
+          $('.image-upload-wrap').removeClass('image-dropping');
+      });
+    </script>
+  
+
     <br>
     <a href="/users/logout">logout</a>
 
     <h1>nice of you to join us!</h1>
     <h2>here you have access to information on marijuana such as strains, races, and their effects :)))</h2>
-    <form>
-        search:<br>
-        <tr><td><input type="text" name="keyword" onkeyup="callREST()"></td></tr>
-        <tr><td><input name="Submit" type="submit" value="search ouid"></td></tr><br>
-    </form>
-    <div id="response"></div>
-
+   
     <style>
         .avatar {
             vertical-align: middle;
@@ -41,6 +84,7 @@
         form {
             text-align: right;
             padding-right: 1em;
+            display: block;
         }
         div {
             text-align: right;
@@ -51,6 +95,7 @@
             color: whitesmoke;
             position: absolute;
             bottom: 7%;
+            padding-left: 1em;
         }
         p {
             padding-right: 1em;
@@ -82,6 +127,115 @@
         .em {
             text-align: center;
         }
+        .file-upload {
+            background-color: #ffffff;
+            width: 200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .file-upload-btn {
+            width: 100%;
+            margin: 0;
+            color: #fff;
+            background: #E9967A;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            border-bottom: 4px solid #E9967A;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .file-upload-btn:hover {
+            background: #E9967A;
+            color: #ffffff;
+            transition: all .2s ease;
+            cursor: pointer;
+        }
+
+            .file-upload-btn:active {
+            border: 0;
+            transition: all .2s ease;
+            }
+
+            .file-upload-content {
+            display: none;
+            text-align: center;
+            }
+
+            .file-upload-input {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            outline: none;
+            opacity: 0;
+            cursor: pointer;
+            }
+
+            .image-upload-wrap {
+            margin-top: 20px;
+            border: 4px dashed #E9967A;
+            }
+
+            .image-dropping,
+            .image-upload-wrap:hover {
+            background-color: #E9967A;
+            border: 4px dashed #ffffff;
+            }
+
+            .image-title-wrap {
+            padding: 0 15px 15px 15px;
+            color: #222;
+            }
+
+            .drag-text {
+            text-align: center;
+            padding-left: 2em;
+            }
+
+            .drag-text h3 {
+            font-weight: 100;
+            text-transform: uppercase;
+            color: #E9967A;
+            padding: 60px 0;
+            }
+
+            .file-upload-image {
+            max-height: 200px;
+            max-width: 200px;
+            }
+
+            .remove-image {
+            width: 200px;
+            margin: 0;
+            color: #fff;
+            background: #cd4535;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            border-bottom: 4px solid #b02818;
+            transition: all .2s ease;
+            outline: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            }
+
+            .remove-image:hover {
+            background: #c13b2a;
+            color: #ffffff;
+            transition: all .2s ease;
+            cursor: pointer;
+            }
+
+            .remove-image:active {
+            border: 0;
+            transition: all .2s ease;
+            }
     </style>
     <div class="footer">
         <p>OUID | COVID-19 EDITION 2021</p>

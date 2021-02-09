@@ -49,10 +49,17 @@ app.use(fileUpload({
     limits: { fileSize: 50 * 1024 * 1024 },
 }));
 
+
 // app.listen(3000); 
+
+const server = app.listen(3000, () => {
+    console.log(` welcome to OUID! :))) `);
+  });
+  const port = app.listen(process.env.PORT, '0.0.0.0');
 
 module.exports = app;
 
-const PORT = process.env.PORT || 3000; app.listen(PORT, () => { console.log(`Success! Connected! Run ${PORT} from host cpu to open!`); });
+// const PORT = process.env.PORT || 3000; app.listen(PORT, () => { console.log(`Success! Connected! Run ${PORT} from host cpu to open!`); });
+
 
 
